@@ -1,0 +1,12 @@
+{% if latest_mois_list %}
+    <ul>
+    {% for mois in latest_mois_list %}
+     <li>{{ mois.moisture }} {{ mois.pub_date }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No moisture are available.</p>
+{% endif %}
+<br>
+<a href="../control">Centro Control</a>
+<br>

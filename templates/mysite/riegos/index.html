@@ -1,0 +1,12 @@
+{% if latest_riego_list %}
+    <ul>
+    {% for riego in latest_riego_list %}
+     <li>{{ riego.rele }} {{ riego.duracion }} {{ riego.pub_date }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No riego are available.</p>
+{% endif %}
+<br>
+<a href="../control">Centro Control</a>
+<br>

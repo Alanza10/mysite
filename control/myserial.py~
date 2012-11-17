@@ -1,0 +1,71 @@
+import serial
+import time
+
+
+SYSTEM_RESET = 0xFF # reset from MIDI
+START_SYSEX = 0xF0 # start a MIDI SysEx message
+
+class myserial():
+        
+        
+        def __init__ (self,port, baudrate=115200, timeout=2):
+                
+		self.ser = serial.Serial(port, baudrate)
+		self.ser.port     = port
+		self.ser.baudrate = baudrate
+                self.ser.timeout = timeout
+                self.ser.setRTS(False)
+		#self.ser.setRTS(False)
+
+        def parse(self):
+		"""Preparing the data to be handled"""
+		data = self.ser.read()
+		if data != "":
+		    self.__process(ord(data))		
+        
+        def __process(self, input_data):
+		  """Handling input data"""
+		  command = None		      
+           
+	def synctime(self):         
+		  #T+10digitos epoch
+                  command='T'+str(round(time.time())).rstrip('0').rstrip('.') 
+		  self.ser.write(command)
+                  self.ser.flush()
+                  return self.readline()
+	
+        def humedad(self):	   
+ 		  #HUM
+		  command='HUM' 
+		  self.ser.write(command)
+                  self.ser.flush()        
+                  return self.readline()
+
+        def readline(self):
+                  time.sleep(1)
+                  #while self.ser.inWaiting() > 0:
+		  data=self.ser.readline()
+		  return data 	 
+        
+        def date(self):
+                  #DAT
+		  command='DAT' 
+		  self.ser.write(command) 
+                  self.ser.flush()       
+                  return self.readline()
+
+        def forcesynctime(self):         
+		  time.sleep(1)
+	# SYNC TIME COMMAND
+	 	  self.ser.write('SYN')
+		  
+		     
+
+                     		  
+	def makesync(self):
+               sync = self.issync()
+	       if not(sync):
+	           self.forcesynctime()           
+	       time.sleep(1)      
+		  #while ser.inWaiting() > 0:
+	       self.synctime()

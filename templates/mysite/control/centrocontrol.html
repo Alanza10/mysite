@@ -1,0 +1,62 @@
+
+<table border=0>
+        <th>Centro de Control</th>
+        <tr><td>
+	<table border=0>
+	<tr><td VALIGN=TOP>
+	<a href="../temp">temperaturas</a>
+
+	<form action="{% url 'control.views.temperatura' %}" method="post">{% csrf_token %}
+	    <input type="submit" value="temperatura" />
+	</form>
+	</td>
+
+	<td VALIGN=TOP>
+	<a href="../mois">humedad</a>
+
+	<form action="{% url 'control.views.humedad' %}" method="post">{% csrf_token %}
+	    <input type="submit" value="humedad" />
+	</form>
+	</td></tr>
+	</table>
+        </td></tr>
+
+	<tr><td>
+	<form action="{% url 'control.views.releOn' %}" method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+		<table border=0>
+		<th>RELE</th>
+		<th>MINUTOS</th>  
+		<tr><td VALIGN=TOP>
+		<input type="radio" name="choice" id="choice1" value="RELE1" checked="checked" /><label for="choice1">RELE 1</label><br />
+		<input type="radio" name="choice" id="choice2" value="RELE2" /><label for="choice2">RELE 2</label><br />
+		<input type="radio" name="choice" id="choice3" value="RELE3" /><label for="choice3">RELE 3</label><br />
+		<input type="radio" name="choice" id="choice4" value="RELE4" /><label for="choice4">RELE 4</label><br />
+		</td>
+		<td VALIGN=TOP>
+		<input type="radio" name="time" id="time1" value="1" checked="checked" /><label for="time1">1 min</label><br />
+		<input type="radio" name="time" id="time2" value="2" /><label for="time2">2 min</label><br />
+		<input type="radio" name="time" id="time3" value="3" /><label for="time3">3 min</label><br />
+		<input type="radio" name="time" id="time4" value="4" /><label for="time4">4 min</label><br />
+		<input type="radio" name="time" id="time5" value="5" /><label for="time5">5 min</label><br />
+		<input type="radio" name="time" id="time6" value="6" /><label for="time6">6 min</label><br />
+		<input type="radio" name="time" id="time7" value="7" /><label for="time7">7 min</label><br />
+		<input type="radio" name="time" id="time8" value="8" /><label for="time8">8 min</label><br />
+		<input type="radio" name="time" id="time9" value="9" /><label for="time9">9 min</label><br />
+		</td></tr>
+		<tr><td VALIGN=TOP>
+		<input type="submit" value="ONRele" />
+		</td>
+		<td VALIGN=TOP>
+		<a href="../riegos">Riegos</a>
+		</td></tr>
+		<table>
+	</form>
+	</td></tr>
+
+        <tr><td WIDTH=100 ALIGN=CENTER>
+	<a href="../admin">Administracion</a>
+	</td></tr>
+</table>
+
