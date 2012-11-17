@@ -7,6 +7,8 @@ import serial
 import re
 from control.myserial import myserial
 import time
+import sys
+
 
 class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
@@ -17,18 +19,30 @@ class Command(BaseCommand):
 
     def handle(self, **options):
 #         print "This is a command"
-          ser=myserial("/dev/ttyUSB0","57600") 
-          ser.synctime() 
-          data = ser.humedad()          
-          ser.ser.close()
-          m = re.match(r'Soil moisture: (.*)', data)
-          if m:
-	     unicodes=unicode(m.group(1), "utf-8")
-             moisture = Moisture(moisture=unicodes, pub_date=timezone.now())
-	     moisture.save()
-             print unicodes
-          else:
-             print "No se puede leer humedad"
+        try:
+           ser=myserial("/dev/ttyUSB0","57600") 
+           
+           #-- Timeout: 1 seg
+           ser.timeout=1;
+           ser.synctime() 
+           data = ser.humedad()          
+           ser.ser.close()
+           m = re.match(r'Soil moisture: (.*)', data)
+           if m:
+          #  unicodes=unicode(m.group(1), "utf-8")
+          #  moisture = Moisture(moisture=unicodes, pub_date=timezone.now())
+          #  moisture.save()
+                print unicodes
+           else:
+                print "No se puede leer humedad"
+        except serial.SerialException:
+           #-- Error al abrir el puerto serie
+           print ("Error al abrir puerto: ")
+           
+    
+  
+
+
          
 
        

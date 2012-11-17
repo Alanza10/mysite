@@ -9,15 +9,11 @@ class myserial():
         
         
         def __init__ (self,port, baudrate, bytesize=serial.EIGHTBITS, parity=serial.PARITY_NONE, rtscts=True, xonxoff=False, timeout=1):
-                try:
-		    self.ser = serial.serial_for_url(port, baudrate, bytesize=serial.EIGHTBITS,  parity=parity, rtscts=rtscts, xonxoff=xonxoff, timeout=1)
-		except AttributeError:
-		    # happens when the installed pyserial is older than 2.5. use the
-		    # Serial class directly then.
-	            pass
-                time.sleep(1)
-                #self.ser.setRTS(True)
-		#self.ser.setDTR(True)
+            try:
+		        self.ser = serial.serial_for_url(port, baudrate, bytesize=serial.EIGHTBITS,  parity=parity, rtscts=rtscts, xonxoff=xonxoff, timeout=1)
+        
+            except serial.SerialException:
+                print ("Error al abrir puerto: ")
 
         def reset(self):
                 while self.ser.inWaiting() > 0:
