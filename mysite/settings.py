@@ -160,6 +160,6 @@ LOGGING = {
 
 
 # Import the settings dev file if we are developing 
-if os.environ.get('DEVELOPMENT', None):
+if os.environ.get('DJDEVELOPMENT', None)==True:
   from mysite.settings_dev import *
 
