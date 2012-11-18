@@ -10,10 +10,11 @@ class myserial():
         
         def __init__ (self,port, baudrate, bytesize=serial.EIGHTBITS, parity=serial.PARITY_NONE, rtscts=True, xonxoff=False, timeout=1):
             try:
-		        self.ser = serial.serial_for_url(port, baudrate, bytesize=serial.EIGHTBITS,  parity=parity, rtscts=rtscts, xonxoff=xonxoff, timeout=1)
-        
+		    self.ser = serial.serial_for_url(port, baudrate, bytesize=serial.EIGHTBITS,  parity=parity, rtscts=rtscts, xonxoff=xonxoff, timeout=1)
+  #              self.enabled=1
             except serial.SerialException:
                 print ("Error al abrir puerto: ")
+                self.enabled=0
 
         def reset(self):
                 while self.ser.inWaiting() > 0:

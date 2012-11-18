@@ -21,36 +21,30 @@ class Command(BaseCommand):
           ser=myserial("/dev/ttyUSB0","57600") 
           #ser.reset()
           #ser.synctime()
-          ser.readline()        
-# Por defecto delay 1 si hay segundo parametro se cambia          
-	  delay = '1'
-	  if len(args)==2:
-	      delay = args[1]
-# Por defecto relay 1 se cambia por primer parametro          
-	  relay = '1'
-	  if len(args)>=1:
-	      relay = args[0]
-	  if args[0] == '1': 
-	    ser.ser.write('R'+relay+delay)
-            r = Riego(rele='RELE1', duracion=delay, pub_date=timezone.now())
-            r.save() 
-	  elif args[0] == '2':
-	    ser.ser.write('R'+relay+delay)
-            r = Riego(rele='RELE2', duracion=delay, pub_date=timezone.now())
-            r.save()
-	  elif args[0] == '3':
-	    ser.ser.write('R'+relay+delay)
-            r = Riego(rele='RELE3', duracion=delay, pub_date=timezone.now())
-            r.save()
-	  elif args[0]== '4':
-	    ser.ser.write('R'+relay+delay)
-            r = Riego(rele='RELE4', duracion=delay, pub_date=timezone.now())
-            r.save() 
-          #time.sleep(1)       
-          #while ser.ser.inWaiting() > 0:
-	#	  data=ser.ser.readline()
-         #         print data
-            data=ser.readline()
-            print data         
-            #ser.ser.close()
-   
+          if ser.enabled==1:
+        	  if len(args)>=1:
+        	      relay = args[0]
+        	  if args[0] == '1': 
+        	    ser.ser.write('R'+relay+delay)
+                    r = Riego(rele='RELE1', duracion=delay, pub_date=timezone.now())
+                    r.save() 
+        	  elif args[0] == '2':
+        	    ser.ser.write('R'+relay+delay)
+                    r = Riego(rele='RELE2', duracion=delay, pub_date=timezone.now())
+                    r.save()
+        	  elif args[0] == '3':
+        	    ser.ser.write('R'+relay+delay)
+                    r = Riego(rele='RELE3', duracion=delay, pub_date=timezone.now())
+                    r.save()
+        	  elif args[0]== '4':
+        	    ser.ser.write('R'+relay+delay)
+                    r = Riego(rele='RELE4', duracion=delay, pub_date=timezone.now())
+                    r.save() 
+                  #time.sleep(1)       
+                  #while ser.ser.inWaiting() > 0:
+        	#	  data=ser.ser.readline()
+                 #         print data
+                    data=ser.readline()
+                    print data         
+                    #ser.ser.close()
+       

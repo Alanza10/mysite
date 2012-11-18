@@ -1,10 +1,11 @@
 # Django settings for mysite project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    # ('Angel lanza', 'a.lanza10@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -12,7 +13,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/home/gelo/django/bases/bd',                      # Or path to database file if using sqlite3.
+        'NAME': '/var/django/mysite/bases/bd',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -106,7 +107,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-   '/home/gelo/django/templates/mysite'
+   '/var/django/mysite/templates/mysite'
 )
 
 INSTALLED_APPS = (
@@ -156,3 +157,9 @@ LOGGING = {
         },
     }
 }
+
+
+# Import the settings dev file if we are developing 
+if os.environ.get('DEVELOPMENT', None):
+  from mysite.settings_dev import *
+
