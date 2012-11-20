@@ -13,7 +13,7 @@ class Command(BaseCommand):
 
     def handle(self, **options):    
         qs = Temperatura.objects.all()
-        qss = qsstats.QuerySetStats(qs, 'temperaturas_temperatura')
+        qss = qsstats.QuerySetStats(qs, 'pub_date')
         
         today = datetime.date.today()
         seven_days_ago = today - datetime.timedelta(days=7)
