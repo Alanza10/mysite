@@ -13,7 +13,7 @@ urlpatterns = patterns('',
     url(r'^control/', include('control.urls')),
     url(r'', include('control.urls')),
     url(r'^temp/', include('temperaturas.urls')),
-    url(r'^temp2/',  TemplateView.as_view(template_name='estadisticas.html')),
+ #   url(r'^temp2/',  TemplateView.as_view(template_name='estadisticas.html')),
     url(r'^mois/', include('moisture.urls')),
     url(r'^riegos/',ListView.as_view(
             queryset=Riego.objects.order_by('-pub_date'),
