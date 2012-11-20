@@ -1,13 +1,7 @@
 import datetime, qsstats
 from optparse import make_option
 from django.core.management.base import BaseCommand, CommandError
-from subprocess import check_output
 from temperaturas.models import Temperatura
-from django.utils import timezone
-import serial
-import time
-from control.myserial import myserial
-from django.contrib.auth import User
 
 class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
@@ -18,7 +12,7 @@ class Command(BaseCommand):
     help = 'Help text goes here'
 
     def handle(self, **options):    
-        qs = User.objects.all()
+        qs = Temperatura.objects.all()
         qss = qsstats.QuerySetStats(qs, 'temperaturas_temperatura')
         
         today = datetime.date.today()
