@@ -14,7 +14,7 @@ class Command(BaseCommand):
   def handle(self, **options):
     #    print "This is a command"
 #         s=check_output('temper', shell=True)
-    s = check_output('sudo temper | grep -o "[0-4]\{1,3\}\.[0-9]\{1,3\}"', shell=True)
+    s = check_output('sudo temper | grep -o "[0-5]\{1,3\}\.[0-9]\{1,3\}"', shell=True)
     unicodes = unicode(s,"utf-8")
     t=Temperatura(temperatura=unicodes, pub_date=timezone.now())
     t.save() 
