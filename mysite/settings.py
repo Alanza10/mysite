@@ -127,7 +127,7 @@ INSTALLED_APPS = (
     'chronograph',
     'moisture',
     'control',
-    'qsstats',
+#    'qsstats',
     'chartit',
 )
 
