@@ -128,6 +128,7 @@ INSTALLED_APPS = (
     'moisture',
     'control',
     'qsstats',
+    'chartit',
 )
 
 # A sample logging configuration. The only tangible logging
