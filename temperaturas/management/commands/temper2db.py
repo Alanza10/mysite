@@ -12,7 +12,6 @@ class Command(BaseCommand):
   help = 'Help text goes here'
 
   def handle(self, **options):
-    #    print "This is a command"
 #         s=check_output('temper', shell=True)
     s = check_output('sudo temper', shell=True)
     unicodes = unicode(s,"utf-8")
