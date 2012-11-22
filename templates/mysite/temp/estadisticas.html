@@ -1,15 +1,21 @@
-<head>
-	
-    <!-- code to include the highcharts and jQuery libraries goes here -->
-    <!-- load_charts filter takes a comma-separated list of id's where -->
-    <!-- the charts need to be rendered to                             -->
- <script type = "text/javascript" src = "{{ STATIC_URL }}Highcharts-  2.2.1/js/highcharts.js"></script>
-  <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js">   </script>
-  <script type = "text/javascript" src = "{{ STATIC_URL }}jquery-1.7.1.min.js"></script>
-
-    {% load chartit %}
-    {{ weatherchart|load_charts:"container" }}
-</head>
-<body>
-    <div id='container'> Chart will be rendered here </div>
-</body>
+{% load googlecharts %}
+{# container #}
+<div id="out"></div>
+{% googlecharts %}
+    {# named data and options can be reused #}
+    {% data values "out_data" %}
+        {% col "string" "Name" %}"{{ val }}"{% endcol %}
+        {% col "number" "Value" %}{{ val }}{% endcol %}
+    {% enddata %}
+    {# you can also use global javascript variables here, #}
+    {# and call functions #}
+    {% options "out_options" %}
+        kind: "PieChart",
+        options: {
+            width: 300,
+            height: 240
+        }
+    {% endoptions %}
+    {# chart is assembled from container, data and options #}
+    {% graph "out" "out_data" "out_options" %}
+{% endgooglecharts %}
