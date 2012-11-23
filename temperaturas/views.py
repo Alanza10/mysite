@@ -1,38 +1,19 @@
-from chartit import DataPool, Chart
+from django.shortcuts import render_to_response
+from django.http import HttpResponse, HttpResponseRedirect
+from django.template import RequestContext
+from django.http import Http404
+from django.core.exceptions import ObjectDoesNotExist
 
-def weather_chart_view(request):
-    #Step 1: Create a DataPool with the data we want to retrieve.
-    tempdata = \
-        DataPool(
-           series=
-            [{'options': {
-               'source': Temperatura.objects.all()},
-              'terms': [
-                'temperatura',
-                'pub_date']}
-             ])
+from models import *
+import pforms
+from pygooglechart import PieChart2D
 
-    #Step 2: Create the Chart object
-    cht = Chart(tempdata,
-            series_options =
-              [{'options':{
-                  'type': 'line',
-                  'stacking': False},
-                'terms':{
-                  'temperatura': [
-                    'pub_date']
-                  }}],
-            chart_options =
-              {'title': {
-                   'text': 'Temperatura Diaria'},
-               'xAxis': {
-                    'title': {
-                       'text': 'Temperatura'}}})
-
-    #Step 3: Send the chart object to the template.
-    return render_to_response({'weatherchart': cht})
-
-
+def results():
+    chart = PieChart2D(400, 200)
+    chart.set_pie_labels("sss")
+    chart_url = chart.get_url()
+    payload = {'question':question, 'total_votes':total_votes, 'chart_url':chart_url}
+    return render('temp/estadisticas.html', payload)
 
   
 
