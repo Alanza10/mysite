@@ -129,7 +129,6 @@ INSTALLED_APPS = (
     'control',
 #    'qsstats',
     'chartit',
-    'googlecharts',
 )
 
 # A sample logging configuration. The only tangible logging
