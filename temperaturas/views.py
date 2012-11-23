@@ -11,7 +11,9 @@ def results():
     chart = PieChart2D(400, 200)
     chart.set_pie_labels("sss")
     chart_url = chart.get_url()
-    payload = {'question':question, 'total_votes':total_votes, 'chart_url':chart_url}
+    print "url"
+    print chart_url
+    payload = {'chart_url':chart_url}
     return render('temp/estadisticas.html', payload)
 
   
