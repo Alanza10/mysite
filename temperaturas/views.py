@@ -4,8 +4,7 @@ from django.template import RequestContext
 from django.http import Http404
 from django.core.exceptions import ObjectDoesNotExist
 
-from models import *
-import pforms
+
 from pygooglechart import PieChart2D
 
 def results():
