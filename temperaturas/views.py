@@ -14,7 +14,7 @@ def results():
     print "url"
     print chart_url
     payload = {'chart_url':chart_url}
-    return render('temp/estadisticas.html', payload)
+    return render_to_response('temp/estadisticas.html', payload)
 
   
 
