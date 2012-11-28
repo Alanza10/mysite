@@ -10,7 +10,6 @@ import temperaturas.views
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^polls/', include('polls.urls')),
     url(r'^control/', include('control.urls')),
     url(r'', include('control.urls')),
     url(r'^temp/', include('temperaturas.urls')),
