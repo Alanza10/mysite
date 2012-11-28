@@ -7,7 +7,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from pygooglechart import PieChart2D
 
-def results():
+def results(request):
     chart = PieChart2D(400, 200)
     chart.set_pie_labels("sss")
     chart_url = chart.get_url()
