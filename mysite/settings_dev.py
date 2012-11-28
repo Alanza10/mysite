@@ -1,6 +1,9 @@
 DEBUG = True
 TEMPLATE_DEBUG = True
 
+PROJECT_DIR=os.path.dirname(__file__) 
+STATIC_ROOT = os.path.join(PROJECT_DIR,'static/')
+
 COMPRESS_AUTO = True
 SESSION_COOKIE_SECURE = False
 

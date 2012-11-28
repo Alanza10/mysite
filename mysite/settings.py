@@ -1,9 +1,8 @@
 # Django settings for mysite project.
 import os
 
-PROJECT_DIR=os.path.dirname(__file__) 
-STATIC_ROOT = os.path.join(PROJECT_DIR,'static/')
-DEBUG = True
+
+DEBUG = FALSE
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -59,7 +58,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-#STATIC_ROOT = '/var/django/mysite/static/'
+STATIC_ROOT = '/var/django/mysite/static/'
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
@@ -109,7 +108,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-   '/var/django/mysite/templates/mysite'
+   os.path.join(PROJECT_DIR,'templates/mysite')
 )
 
 INSTALLED_APPS = (
@@ -123,13 +122,10 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
-    #'jsonrpc',
     'temperaturas',
     'chronograph',
     'moisture',
     'control',
-#    'qsstats',
-    'chartit',
 )
 
 # A sample logging configuration. The only tangible logging
