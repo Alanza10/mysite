@@ -1,6 +1,12 @@
 # import fabrics API functions - self-explanatory once you see 
 from fabric.api import * 
 
-def push():
-    local('git push origin') # runs the command on the local environment
-#run('cd //to/project/; git pull') # runs the command on the remote environment 
+env.shell = '/bin/bash'
+
+def push_a_root():
+    local('git push origin') # push al router
+    
+def push_y_deploy():   
+    run('/home/pi/git/pull.sh')# pull raspberry al router
+    run('deploydjango')
+  
