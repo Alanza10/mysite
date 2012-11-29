@@ -126,6 +126,7 @@ INSTALLED_APPS = (
     'chronograph',
     'moisture',
     'control',
+    'chartit',
 )
 
 # A sample logging configuration. The only tangible logging
