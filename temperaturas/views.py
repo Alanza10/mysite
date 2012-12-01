@@ -15,10 +15,7 @@ def results(request):
     G.axes.label(1, None, '50+Kb')        
     G.color('red')
     G.line(6,5,2)
-    _print('prueba','\t',G)
     chart_url=G
-    print "url"
-    print chart_url
     payload = {'chart_url':G}
     return render_to_response('temp/estadisticas.html', payload)
 
