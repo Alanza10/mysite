@@ -1,2 +1,2 @@
 /bd
-/.gitignore
+*.pyc
