@@ -6,8 +6,6 @@ from django.core.exceptions import ObjectDoesNotExist
 from GChartWrapper import *
 from GChartWrapper.constants import _print
 
-from pygooglechart import PieChart2D
-
 def results(request):
     # Add red line 6 thick
     # with 5 line segments with 2 blank segments

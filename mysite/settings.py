@@ -126,7 +126,6 @@ INSTALLED_APPS = (
     'chronograph',
     'moisture',
     'control',
-    'chartit',
     'GChartWrapper.charts',
 )
 
