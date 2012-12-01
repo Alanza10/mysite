@@ -127,6 +127,7 @@ INSTALLED_APPS = (
     'moisture',
     'control',
     'chartit',
+    'GChartWrapper.charts',
 )
 
 # A sample logging configuration. The only tangible logging
