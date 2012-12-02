@@ -9,12 +9,15 @@ from temperaturas.models import Temperatura
 
 def results(request):
     
-    temps=Temperatura.objects.order_by('-pub_date')[:10]
+    temps=Temperatura.objects.exclude(temperatura='').order_by('-pub_date')[:10]
  
 
-    data1 = [2, 5, 9, 13, 17, 21, 25, 29, 33, 37, 41, 45, 49, 53, 57, 61, 65, 69, 73, 79, 83, 87, 91, 95 ]
     
-    data2 =  [25, 24, 25, 23.5, 25, 24, 24, 24.5]
+    #posiciones dataset    
+    data1 = [0, 10, 20, 30, 40, 50 ,60 ,70, 80, 90, 100]
+ 
+    data2 = [temp.temperatura.rstrip() for temp in temps]
+    
     
     # multiple axis with label positions specified
     # values between 0 and 100 - use text encoding
@@ -22,9 +25,8 @@ def results(request):
            data2]
     
     # positions between 0 and 100
-    axis = [ [2, 5, 9, 13, 17, 21, 25, 29, 33, 37, 41, 45, 49, 53, 57, 61, 65, 69, 73, 79, 83, 87, 91, 95 ],
-             ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12',
-            '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '00'] ]
+    axis = [ [0, 10, 20, 30, 40, 50 ,60 ,70, 80, 90, 100],
+             ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'] ]
  
 
         
@@ -50,7 +52,6 @@ def results(request):
     G.axes.position(2, int(100*last_value/max_value)) # 0 to 100
 
     #volcar grafico en payload
-    chart_url=G
     payload = {'chart_url':G}
     return render_to_response('temp/estadisticas.html', payload)
 
