@@ -9,13 +9,14 @@ from temperaturas.models import Temperatura
 
 def results(request):
     
-    temps=Temperatura.objects.exclude(temperatura='').order_by('-pub_date')[:10]
+    temps=Temperatura.objects.exclude(temperatura='').order_by('-pub_date')[:11]
  
 
     
     #posiciones dataset    
     data1 = [0, 10, 20, 30, 40, 50 ,60 ,70, 80, 90, 100]
  
+    #11 ultimas temperaturas
     data2 = [temp.temperatura.rstrip() for temp in temps]
     
     
@@ -24,9 +25,11 @@ def results(request):
     data = [data1, 
            data2]
     
+    axis2 =  [temp.pub_date.time().strftime('%H:%M') for temp in temps]
+    
     # positions between 0 and 100
     axis = [ [0, 10, 20, 30, 40, 50 ,60 ,70, 80, 90, 100],
-             ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'] ]
+             axis2 ]
  
 
         
