@@ -10,22 +10,23 @@ from temperaturas.models import Temperatura
 def results(request):
     
     temps=Temperatura.objects.exclude(temperatura='').order_by('-pub_date')[:11]
- 
 
-    
+    reverse_temps = [ temp.temperatura.rstrip() for temp in temps ] 
+
+    reverse_temps = reverse_temps[::-1]
     #posiciones dataset    
     data1 = [0, 10, 20, 30, 40, 50 ,60 ,70, 80, 90, 100]
  
     #11 ultimas temperaturas
-    data2 = [temp.temperatura.rstrip() for temp in temps]
+    data2 = reverse_temps
     
     
     # multiple axis with label positions specified
     # values between 0 and 100 - use text encoding
     data = [data1, 
            data2]
-    
-    axis2 =  [temp.pub_date.time().strftime('%H:%M') for temp in temps]
+    reverse_time = [temp.pub_date.time().strftime('%H:%M') for temp in temps]
+    axis2 =  reverse_time[::-1]
     
     # positions between 0 and 100
     axis = [ [0, 10, 20, 30, 40, 50 ,60 ,70, 80, 90, 100],
