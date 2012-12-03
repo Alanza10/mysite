@@ -50,10 +50,12 @@ def results(request):
     G.axes.label(0, *axis[1])
     G.axes.position(0, *axis[0])
     G.axes.range(0, 0, 100)
-    G.axes.range(1, 10, 45)  
+    G.axes.range(1, 10, 45)
+    G.axes.range(2, 10, 45)    
     G.axes.label(1, 10, 15, 20, 25, 30, 35, 40, 45)    
     G.axes.position(1, 10, 15, 20, 25, 30, 35, 40, 45) # 0 to 100
-
+    G.axes.label(2, '%d'%last_value)
+    G.axes.position(2, int(100*last_value/max_value)) # 0 to 100
 
     #volcar grafico en payload
     payload = {'chart_url':G}
