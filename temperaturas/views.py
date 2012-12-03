@@ -46,7 +46,7 @@ def results(request):
     G.marker('N*', '0077CC',0,-1,10)
     G.marker('o', '0077CC',0,-1,5)
     G.marker('r', '7fffd4',0,0.35,0.60) # 0 to 1.0
-    G.axes("xy")    
+    G.axes("xyr")    
     G.axes.label(0, *axis[1])
     G.axes.position(0, *axis[0])
     G.axes.range(0, 0, 100)
