@@ -43,6 +43,7 @@ def results(request):
     G.color('76A4FB')
     G.size(600, 240)
     G.scale('0', '100', '10', '45')
+    G.marker('N*', '0077CC',0,-1,10)
     G.marker('o', '0077CC',0,-1,5)
     G.marker('r', '7fffd4',0,0.35,0.60) # 0 to 1.0
     G.axes("xyr")    
