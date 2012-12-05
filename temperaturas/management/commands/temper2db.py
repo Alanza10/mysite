@@ -17,4 +17,4 @@ class Command(BaseCommand):
     unicodes = unicode(s,"utf-8")
     t=Temperatura(temperatura=unicodes, pub_date=timezone.now())
     t.save() 
-    print unicodes
+    

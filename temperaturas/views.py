@@ -6,8 +6,10 @@ from django.core.exceptions import ObjectDoesNotExist
 from GChartWrapper import *
 from GChartWrapper.constants import _print
 from temperaturas.models import Temperatura
+import datetime
 
 def results(request):
+ 
     
     temps=Temperatura.objects.exclude(temperatura='').order_by('-pub_date')[:11]
 
@@ -25,7 +27,8 @@ def results(request):
     # values between 0 and 100 - use text encoding
     data = [data1, 
            data2]
-    reverse_time = [temp.pub_date.time().strftime('%H:%M') for temp in temps]
+    reverse_time = [temp.pub_date.strftime('%H:%M') for temp in temps]
+    print reverse_time[0]
     axis2 =  reverse_time[::-1]
     
     # positions between 0 and 100
