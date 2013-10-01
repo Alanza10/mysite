@@ -9,8 +9,7 @@ from temperaturas.models import Temperatura
 import datetime
 
 def results(request):
- 
-    
+  
     temps=Temperatura.objects.exclude(temperatura='').order_by('-pub_date')[:11]
 
     reverse_temps = [ temp.temperatura.rstrip() for temp in temps ] 
